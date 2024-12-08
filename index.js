@@ -32,9 +32,9 @@ app.get('/membership-discount', (req, res) => {
   let result = cartTotal;
   if (isMember === 'true') {
     cartTotal = cartTotal - cartTotal * (discountPercentage / 100);
-    return cartTotal;
+    result= cartTotal;
   } else {
-    return cartTotal;
+    result= cartTotal;
   }
   
   res.send(result.toString());
