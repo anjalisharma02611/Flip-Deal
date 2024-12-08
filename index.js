@@ -1,19 +1,17 @@
 let express = require('express');
 let cors = require('cors');
-const { resolve } = require('path');
-
-const app = express();
-// const port = 3000;
-
+let port = 3000;
+let app = express();
 app.use(cors());
 
-let taxRate = 5;
-let discountPercentage = 10;
-let loyaltyRate = 2;
+//Server-side values
+let taxRate = 5; // 5%
+let discountPercentage = 10; // 10%
+let loyaltyRate = 2; // 2 points per $1
 
-app.get('/', (req, res) => {
-  res.sendFile(resolve(__dirname, 'pages/index.html'));
-});
+// app.get('/', (req, res) => {
+//   res.sendFile(resolve(__dirname, 'pages/index.html'));
+// });
 
 // <http://localhost:3000/cart-total?newItemPrice=1200&cartTotal=0>
 
@@ -88,7 +86,6 @@ app.get('/loyalty-points', (req, res) => {
 // });
 
 
-const port = process.env.PORT || 3000; // Fallback to 3000 if PORT is not set
 app.listen(port, () => {
-  console.log('Server running on port ${port}');
+  console.log('Server is running on http://localhost: ', port);
 });
