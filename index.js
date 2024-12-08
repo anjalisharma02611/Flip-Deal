@@ -3,7 +3,7 @@ let cors = require('cors');
 const { resolve } = require('path');
 
 const app = express();
-const port = 3000;
+// const port = 3000;
 
 app.use(cors());
 
@@ -83,6 +83,12 @@ app.get('/loyalty-points', (req, res) => {
   res.send(result.toString());
 });
 
+// app.listen(port, () => {
+//   console.log(`Example app listening at http://localhost:${port}`);
+// });
+
+
+const port = process.env.PORT || 3000; // Fallback to 3000 if PORT is not set
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log('Server running on port ${port}');
 });
