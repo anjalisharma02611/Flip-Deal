@@ -30,8 +30,11 @@ app.get('/membership-discount', (req, res) => {
   let cartTotal = parseFloat(req.query.cartTotal);
   let isMember = req.query.isMember;
   let result = cartTotal;
-  if(isMember){
-    result = cartTotal * 0.9;
+  if (isMember === 'true') {
+    cartTotal = cartTotal - cartTotal * (discountPercentage / 100);
+    return cartTotal;
+  } else {
+    return cartTotal;
   }
   
   res.send(result.toString());
